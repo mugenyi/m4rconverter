@@ -1,0 +1,14 @@
+{
+    "name": "mugenyi/m4rconverter",
+    "description": "iphone audio ringtone converter MPEG4 audio",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mugenyi",
+            "email": "kraytosda1st@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
