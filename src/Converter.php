@@ -1,7 +1,11 @@
 <?php
+require_once __DIR__.'/../bootstrap/start.php';
+
     namespace M4rconverter;
 
-     use FFMpeg\FFMpeg;
+    use FFMpeg\FFMpeg;
+    use M4rconverter\Format\M4r;
+    use M4rconverter\Processor\FFmpegProcessor;
     class converter
     {
       protected $file ;
@@ -60,6 +64,16 @@
         return $this;
       }
 
+      public function convert()
+      {
+         $processor = new FFmpegProcessor($this->getFFMpegConfiguration());
+         $audio = $processor->getProcessedFile($this->inputFile);
+
+         $format = new M4r($this->getAudioFormatConfiguration());
+
+         $processor->save($format,$this->destination);
+
+      }
 
 
 
