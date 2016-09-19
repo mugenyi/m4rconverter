@@ -22,6 +22,7 @@ class FFmpegProcessor implements ProcessorInterface {
       list($name,$extention) = explode('.',basename($this->inputFile));
       return $name;
     }
+
     private function validateDirectory($directory)
     {
 
@@ -37,15 +38,33 @@ class FFmpegProcessor implements ProcessorInterface {
       return true;
     }
 
+    private function getDirectoryWithSeperator($directory)
+    {
+      $directory = trim($directory);
+      $length  = strlen($directory);
+
+      if(!$directory[$length] === '/'){
+        $directory.'/';
+      }
+
+      return $directory;
+    }
+
+
+
+
     private function getOutPutFileName($destination){
 
+      $this->validateDirectory($destination);
 
+      return $this->getDirectoryWithSeperator()
+             .$this->getFileNameWithOutExtention().'m4r';
     }
 
 
     public function save($format,$destination)
     {
-        $this->FFMpeg->save($format,$des)
+        $this->FFMpeg->save($format,$this->getOutPutFileName($destination));
     }
 
 }
