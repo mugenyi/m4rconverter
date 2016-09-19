@@ -40,11 +40,8 @@ class FFmpegProcessor implements ProcessorInterface {
 
     private function getDirectoryWithSeperator($directory)
     {
-      $directory = trim($directory);
-      $length  = strlen($directory);
-
-      if(!$directory[$length] === '/'){
-        $directory.'/';
+      if(!preg_match("/.*\/$/",$directory)){
+        $directory = $directory.'/';
       }
 
       return $directory;
