@@ -25,7 +25,7 @@
      *get only  FFMpeg\FFMpeg configurations
      *@return array
     */
-      public getFFMpegConfiguration()
+      public function getFFMpegConfiguration()
       {
         return $this->ffmpegConfiguration;
       }
@@ -34,12 +34,14 @@
        *set   FFMpeg\FFMpeg package  configurations
        *@return this
       */
-      public setFFMpegConfiguration(array $configuration)
+      public function  setFFMpegConfiguration(array $configuration)
       {
         $this->ffmpegConfiguration = $configuration
-        
+
         return $this;
       }
+
+      
 
 
 
