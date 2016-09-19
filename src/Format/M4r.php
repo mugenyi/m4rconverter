@@ -1,7 +1,7 @@
 <?php
    namespace M4rconverter\Format;
 
-   use  FFMpeg\Format\Audio\Aac;
+   use  M4rconverter\Format\Audio\M4rconverterAac;
    class M4r
    {
       protected $configuration;
@@ -10,7 +10,7 @@
       public function __construct(array $configuration)
       {
         $this->configuration = $configuration;
-        $this->format =  new Aac();
+        $this->format =  new M4rconverterAac();
       }
 
       private function setConfiguration()
