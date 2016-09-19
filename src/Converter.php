@@ -30,6 +30,17 @@
         return $this->ffmpegConfiguration;
       }
 
+      /*
+       *set   FFMpeg\FFMpeg package  configurations
+       *@return this
+      */
+      public setFFMpegConfiguration(array $configuration)
+      {
+        $this->ffmpegConfiguration = $configuration
+        
+        return $this;
+      }
+
 
 
     }
