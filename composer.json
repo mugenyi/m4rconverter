@@ -12,5 +12,10 @@
     "minimum-stability": "dev",
     "require": {
         "php-ffmpeg/php-ffmpeg": "~0.5"
+    },
+    "autoload":{
+      "psr4":{
+        "M4rconverter\\":"src/"
+      }
     }
 }
