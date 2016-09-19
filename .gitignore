@@ -2,3 +2,4 @@
 /converted/
 Vagrantfile
 .vagrant
+/vendor
