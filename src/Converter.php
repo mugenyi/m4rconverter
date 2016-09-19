@@ -6,7 +6,8 @@
     {
       protected $file ;
       protected $destination;
-      protected $configuration;
+      protected $ffmpegConfiguration = [];
+      protected $audioFormatConfiguration = []
 
       /*
        * @param $inputFile String | Path to the file to be converted
@@ -14,11 +15,10 @@
        * @param $configuration array| configuration
       */
 
-      public function __construct($inputFile,$destination,$configuration=[])
+      public function __construct($inputFile,$destination)
       {
           $this->file = $inputFile;
           $this->destination = $destination;
-          $this->configuration  = $configuration;
       }
 
     /*
@@ -27,19 +27,9 @@
     */
       public getFFMpegConfiguration()
       {
-        if(array_key_exists('bitrate',$this->configuration)){
-          unset($this->configuration['bitrate']);
-        }
-
-        if(array_key_exists('audioChannel')){
-          unset($this->configuration['audioChannel']);
-        }
-
-        if(empty($this->configuration)){
-          return [];
-        }
-
-        return $this->configuration;
+        return $this->ffmpegConfiguration;
       }
+
+
 
     }
