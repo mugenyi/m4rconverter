@@ -27,8 +27,9 @@
       }
 
 
-      public funtion getFormat()
+      public function getFormat()
       {
+        $this->setConfiguration();
         return $this->format;
       }
 
