@@ -1,7 +1,7 @@
 <?php
-   namespace M4rconverter\Format\Audio;
+   namespace M4rconverter\Format;
 
-   use  FFMpeg\Format\Audio;
+   use  FFMpeg\Format\Audio\Aac;
    class M4r
    {
       protected $configuration;
