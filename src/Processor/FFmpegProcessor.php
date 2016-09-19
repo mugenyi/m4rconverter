@@ -30,7 +30,7 @@ class FFmpegProcessor implements ProcessorInterface {
 
       }
 
-      if(!is_writeable($directory)){
+      if(!is_writable($directory)){
         throw new \Exception("Could not write to the directory");
 
       }
