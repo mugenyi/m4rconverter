@@ -1,17 +1,20 @@
 <?php
+    namespace M4rconverter;
 require_once __DIR__.'/../bootstrap/start.php';
 
-    namespace M4rconverter;
+
 
     use FFMpeg\FFMpeg;
     use M4rconverter\Format\M4r;
     use M4rconverter\Processor\FFmpegProcessor;
-    class converter
+
+
+    class Converter
     {
       protected $file ;
       protected $destination;
       protected $ffmpegConfiguration = [];
-      protected $audioFormatConfiguration = []
+      protected $audioFormatConfiguration = [];
 
       /*
        * @param $inputFile String | Path to the file to be converted
@@ -40,7 +43,7 @@ require_once __DIR__.'/../bootstrap/start.php';
       */
       public function  setFFMpegConfiguration(array $configuration)
       {
-        $this->ffmpegConfiguration = $configuration
+        $this->ffmpegConfiguration = $configuration;
 
         return $this;
       }
@@ -67,11 +70,11 @@ require_once __DIR__.'/../bootstrap/start.php';
       public function convert()
       {
          $processor = new FFmpegProcessor($this->getFFMpegConfiguration());
-         $audio = $processor->getProcessedFile($this->inputFile);
+         $audio = $processor->getProcessedFile($this->file);
 
          $format = new M4r($this->getAudioFormatConfiguration());
 
-         $processor->save($format,$this->destination);
+         $processor->save($audio,$format,$this->destination);
 
       }
 

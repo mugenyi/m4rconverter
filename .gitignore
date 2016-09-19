@@ -3,3 +3,4 @@
 Vagrantfile
 .vagrant
 /vendor
+test.php

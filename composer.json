@@ -14,7 +14,7 @@
         "php-ffmpeg/php-ffmpeg": "~0.5"
     },
     "autoload":{
-      "psr4":{
+      "psr-4":{
         "M4rconverter\\":"src/"
       }
     }
