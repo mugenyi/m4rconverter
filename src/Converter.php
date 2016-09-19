@@ -41,7 +41,26 @@
         return $this;
       }
 
-      
+      /*
+       *get  Audio  configurations
+       *@return array
+      */
+      public function getAudioFormatConfiguration()
+      {
+        return $this->audioFormatConfiguration;
+      }
+
+      /*
+       *set  Audio  configurations
+       *@return this
+      */
+      public function setAudioFormatConfiguration (array $configuration)
+      {
+        $this->audioFormatConfiguration = $configuration;
+        return $this;
+      }
+
+
 
 
 
