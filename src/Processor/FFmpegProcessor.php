@@ -54,14 +54,14 @@ class FFmpegProcessor implements ProcessorInterface {
 
       $this->validateDirectory($destination);
 
-      return $this->getDirectoryWithSeperator()
-             .$this->getFileNameWithOutExtention().'m4r';
+      return $this->getDirectoryWithSeperator($destination)
+             .$this->getFileNameWithOutExtention().'.m4r';
     }
 
 
-    public function save($format,$destination)
+    public function save($processedFile,$format,$destination)
     {
-        $this->FFMpeg->save($format,$this->getOutPutFileName($destination));
+        $processedFile->save($format->getFormat(),$this->getOutPutFileName($destination));
     }
 
 }
