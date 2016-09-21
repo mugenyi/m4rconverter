@@ -1,84 +1,92 @@
 <?php
-    namespace M4rconverter;
+namespace M4rconverter;
 require_once __DIR__.'/../bootstrap/start.php';
 
 
 
-    use FFMpeg\FFMpeg;
-    use M4rconverter\Format\M4r;
-    use M4rconverter\Processor\FFmpegProcessor;
+use FFMpeg\FFMpeg;
+use M4rconverter\Format\M4r;
+use M4rconverter\Processor\FFmpegProcessor;
 
 
-    class Converter
-    {
-      protected $file ;
-      protected $destination;
-      protected $ffmpegConfiguration = [];
-      protected $audioFormatConfiguration = [];
+class Converter
+{
+  protected $file ;
+  protected $destination;
+  protected $ffmpegConfiguration = [];
+  protected $audioFormatConfiguration = [];
 
-      /*
-       * @param $inputFile String | Path to the file to be converted
-       * @param $destination String| path to the destination  folder
-       * @param $configuration array| configuration
-      */
+  /*
+  * @param $inputFile String | Path to the file to be converted
+  * @param $destination String| path to the destination  folder
+  * @param $configuration array| configuration
+  */
 
-      public function __construct($inputFile,$destination)
-      {
-          $this->file = $inputFile;
-          $this->destination = $destination;
-      }
+  public function __construct($inputFile,$destination)
+  {
+    $this->file = $inputFile;
+    $this->destination = $destination;
+  }
 
-    /*
-     *get only  FFMpeg\FFMpeg configurations
-     *@return array
-    */
-      public function getFFMpegConfiguration()
-      {
-        return $this->ffmpegConfiguration;
-      }
+  /*
+  *get only  FFMpeg\FFMpeg configurations
+  *@return array
+  */
+  public function getFFMpegConfiguration()
+  {
+    return $this->ffmpegConfiguration;
+  }
 
-      /*
-       *set   FFMpeg\FFMpeg package  configurations
-       *@return this
-      */
-      public function  setFFMpegConfiguration(array $configuration)
-      {
-        $this->ffmpegConfiguration = $configuration;
+  /*
+  *set   FFMpeg\FFMpeg package  configurations
+  *@return this
+  */
+  public function  setFFMpegConfiguration(array $configuration)
+  {
+    $this->ffmpegConfiguration = $configuration;
 
-        return $this;
-      }
+    return $this;
+  }
 
-      /*
-       *get  Audio  configurations
-       *@return array
-      */
-      public function getAudioFormatConfiguration()
-      {
-        return $this->audioFormatConfiguration;
-      }
+  /*
+  *get  Audio  configurations
+  *@return array
+  */
+  public function getAudioFormatConfiguration()
+  {
+    return $this->audioFormatConfiguration;
+  }
 
-      /*
-       *set  Audio  configurations
-       *@return this
-      */
-      public function setAudioFormatConfiguration (array $configuration)
-      {
-        $this->audioFormatConfiguration = $configuration;
-        return $this;
-      }
+  /*
+  *set  Audio  configurations
+  *@return this
+  */
+  public function setAudioFormatConfiguration (array $configuration)
+  {
+    $this->audioFormatConfiguration = $configuration;
+    return $this;
+  }
 
-      public function convert()
-      {
-         $processor = new FFmpegProcessor($this->getFFMpegConfiguration());
-         $audio = $processor->getProcessedFile($this->file);
+  private function getFormat()
+  {
+    return new M4r($this->getAudioFormatConfiguration());
+  }
 
-         $format = new M4r($this->getAudioFormatConfiguration());
+  private function save($format,$destination)
+  {
+    $processor = new FFmpegProcessor($this->getFFMpegConfiguration());
+    $audio = $processor->getProcessedFile($this->file);
 
-         $processor->save($audio,$format,$this->destination);
+    $processor->save($audio,$format,$destination);
+  }
 
-      }
+  public function convert()
+  {
+    $this->save($this->getFormat(),$this->destination);
+
+  }
 
 
 
 
-    }
+}
