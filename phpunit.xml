@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="bootstrap/start.php"
-         backupGlobals="false"
-         backupStaticAttributes="false"
-         colors="true"
-         convertErrorsToExceptions="true">
+<phpunit bootstrap="bootstrap/start.php" colors="true">
   <testsuites>
     <testsuite name='unit'>
       <directory>tests/</directory>
     </testsuite>
   </testsuites>
-
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">src/</directory>
+    </whitelist>
+  </filter>
 </phpunit>
