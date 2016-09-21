@@ -72,18 +72,23 @@ class Converter
     return new M4r($this->getAudioFormatConfiguration());
   }
 
-  private function save($format,$destination)
+  private function getProcessor()
   {
-    $processor = new FFmpegProcessor($this->getFFMpegConfiguration());
-    $audio = $processor->getProcessedFile($this->file);
+    return new FFmpegProcessor($this->getFFMpegConfiguration());
+  }
 
-    $processor->save($audio,$format,$destination);
+  private function save(FFmpegProcessor $ffmpegProcessor,M4r $format,$destination)
+  {
+    $audio = $ffmpegProcessor->getProcessedFile($this->file);
+    $ffmpegProcessor->save($audio,$format,$destination);
   }
 
   public function convert()
   {
-    $this->save($this->getFormat(),$this->destination);
+    $outputFile =  new FileManager($this->file,$this->destination) ;
 
+    $this->save($this->getProcessor(),$this->getFormat(),$this->destination);
+    return true;
   }
 
 

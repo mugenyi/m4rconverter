@@ -26,6 +26,11 @@
         return $this;
       }
 
+      public function getConfiguration()
+      {
+        return $this->configuration;
+      }
+
 
       public function getFormat()
       {
