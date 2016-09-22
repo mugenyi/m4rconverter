@@ -113,7 +113,7 @@ class Converter
   {
     $outputFile = new FileManager($this->file, $this->destination);
 
-    $this->save($this->getProcessor(), $this->getFormat(), $this->destination);
+    $this->save($this->getProcessor(), $this->getFormat(), $outputFile->getOutPutFileName());
 
     return true;
   }
