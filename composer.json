@@ -1,6 +1,7 @@
 {
     "name": "mugenyi/m4rconverter",
-    "description": "iphone audio ringtone converter MPEG4 audio",
+    "description": "iphone audio ringtone converter MPEG4 audio,m4r converter",
+    "keywords":["iphone","iphone ringtone","audio","m4r", "MPEG4"],
     "type": "package",
     "license": "MIT",
     "authors": [
@@ -11,6 +12,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "php":">=5.4",
         "php-ffmpeg/php-ffmpeg": "~0.5"
 
     },
