@@ -35,11 +35,11 @@ M4rconverter allows you to easily configure the underlying __FFmpeg__  and  __au
 
 * configure audio
 
+        $converter->setAudioFormatConfiguration([
+        'bitrate'  => 256, //AudioKiloBitrate
+        'audioChannel' => 2,
+        'duration'=>30 //time in seconds for the   output file
+        ]);
 
-    $converter->setAudioFormatConfiguration([
-     'bitrate'  => 256, //AudioKiloBitrate
-    'audioChannel' => 2,
-    'duration'=>30 //time in seconds for the output file
-    ]);
 ### special thanks
 M4rconverter is built on top of [php-ffmpeg](https://github.com/PHP-FFMpeg/PHP-FFMpeg) package. __special thanks__ to the team behind the project.
