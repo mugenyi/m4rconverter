@@ -13,12 +13,17 @@ use FFMpeg\Format\Audio\Aac;
 
 class M4rconverterAac extends Aac
 {
+  protected $params = ['-f', 'mp4'];
+  public function __construct(array $options =[])
+  {
+    $this->params =  array_merge($this->params,$options);
+  }
   /**
   * Add more options to the comandline ffmpeg command
   * @return array
   */
   public function getExtraParams()
   {
-    return array('-f', 'mp4');
+    return $this->params;
   }
 }

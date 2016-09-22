@@ -19,7 +19,13 @@ class M4r
   public function __construct(array $configuration)
   {
     $this->configuration = $configuration;
-    $this->format = new M4rconverterAac();
+    if(isset($configuration['duration'])){
+        $this->format = new M4rconverterAac(['-t',$configuration['duration']]);
+    }else{
+
+      $this->format = new M4rconverterAac();
+    }
+
   }
   /**
   * set configurations if they have been set
