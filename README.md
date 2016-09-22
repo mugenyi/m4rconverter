@@ -12,20 +12,15 @@ Provide the class with 2 values.
 * Path to the file to be converted.
 * Directory to save the converted file.
 
-
-
-    $converter = new M4rconverter\Converter('tracks/avril.mp3','converted');
-    $converter->convert();
+       $converter = new M4rconverter\Converter('tracks/avril.mp3','converted');
+      $converter->convert();
 
 
 ### configuration
 M4rconverter allows you to easily configure the underlying __FFmpeg__  and  __audio__.
 * configure ffmpeg
 
-
-
-
-    $converter->setFFMpegConfiguration([
+      $converter->setFFMpegConfiguration([
 
       'ffmpeg.binaries'  => '/opt/local/ffmpeg/bin/ffmpeg',
       'ffprobe.binaries' => '/opt/local/ffmpeg/bin/ffprobe',
