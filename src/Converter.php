@@ -11,7 +11,6 @@
 
 namespace M4rconverter;
 
-require_once __DIR__.'/../bootstrap/start.php';
 
 use FFMpeg\FFMpeg;
 use M4rconverter\Format\M4r;
