@@ -34,6 +34,7 @@ M4rconverter allows you to easily configure the underlying __FFmpeg__  and  __au
         'bitrate'  => 256, //AudioKiloBitrate
         'audioChannel' => 2,
         'duration'=>30 //time in seconds for the   output file
+        'seek'=>30 //time in seconds to seek
         ]);
 
 ### special thanks
