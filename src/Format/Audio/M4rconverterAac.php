@@ -14,7 +14,7 @@ use FFMpeg\Format\Audio\Aac;
 
 class M4rconverterAac extends Aac
 {
-    protected $params = ['-acodec', 'libfdk_aac', '-f', 'ipod'];
+    protected $params = ['-map', '0:a', '-map_metadata', '-1', '-c:a', 'libfdk_aac', '-f', 'ipod'];
     public function __construct(array $options = [])
     {
         $this->params = array_merge($this->params, $options);
