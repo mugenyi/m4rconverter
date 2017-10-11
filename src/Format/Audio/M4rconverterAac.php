@@ -38,6 +38,11 @@ class M4rconverterAac extends Aac
       if (!empty($duration)) {
           $setParams[] = '-t';
           $setParams[] = $duration;
+
+          //add a fade at the end
+          $setParams[] = '-af';
+          $setParams[] = 'afade=t=out:st='.($options['duration'] - 1).':d=1';
+
       }
 
       if (!empty($seek)) {
@@ -45,9 +50,6 @@ class M4rconverterAac extends Aac
           $setParams[] = $seek;
       }
 
-//      if(isset($options['duration'])){
-//         $setParams = ['-af','afade=t=out:st='.($options['duration'] - 1).':d=1','-t',$options['duration']] ;
-//      }
 
       $this->params =  array_merge($this->params,$setParams);
 
