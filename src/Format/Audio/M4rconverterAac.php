@@ -16,7 +16,7 @@ class M4rconverterAac extends Aac
   protected $params = ['-f', 'mp4'];
   public function __construct(array $options =[])
   {
-    $this->params =  array_merge($this->params,$options);
+     $this->generateParams($options);
   }
   /**
   * Add more options to the comandline ffmpeg command
@@ -25,5 +25,15 @@ class M4rconverterAac extends Aac
   public function getExtraParams()
   {
     return $this->params;
+  }
+
+  public function generateParams(array $options) {
+      $setParams = [];
+      if(isset($options['duration'])){
+         $setParams = ['-af','afade=t=out:st='.($options['duration'] - 1).':d=1','-t',$options['duration']] ;
+      }
+
+      $this->params =  array_merge($this->params,$setParams);
+
   }
 }

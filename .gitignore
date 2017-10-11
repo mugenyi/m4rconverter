@@ -5,3 +5,4 @@ Vagrantfile
 /vendor
 test.php
 coverage/
+/convert
