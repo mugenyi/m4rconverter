@@ -10,10 +10,9 @@
             "email": "kraytosda1st@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php":">=5.5",
-        "php-ffmpeg/php-ffmpeg": "~0.5"
+        "php-ffmpeg/php-ffmpeg": "0.8.*"
 
     },
     "require-dev":{
