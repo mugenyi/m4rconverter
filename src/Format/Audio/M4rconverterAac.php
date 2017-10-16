@@ -11,9 +11,12 @@
 namespace M4rconverter\Format\Audio;
 
 use FFMpeg\Format\Audio\Aac;
+use M4rconverter\Helpers\TimeFunctions;
 
 class M4rconverterAac extends Aac
 {
+    use TimeFunctions;
+
     protected $params = ['-map', '0:a', '-map_metadata', '-1', '-c:a', 'libfdk_aac', '-f', 'ipod'];
     public function __construct(array $options = [])
     {
@@ -34,21 +37,25 @@ class M4rconverterAac extends Aac
       $duration = (isset($options['duration'])) ? $options['duration'] : '';
       $seek = (isset($options['seek'])) ? $options['seek'] : '';
       $setParams = [];
-
-      if (!empty($duration)) {
-          $setParams[] = '-t';
-          $setParams[] = $duration;
-
-          //add a fade at the end
-          $setParams[] = '-af';
-          $setParams[] = 'afade=t=out:st='.($options['duration'] - 1).':d=1';
-
-      }
+      $seekInseconds = 0;
 
       if (!empty($seek)) {
           $setParams[] = '-ss';
           $setParams[] = $seek;
+
+          $seekInseconds = $this->timeToseconds($seek);
       }
+
+      if (!empty($duration)) {
+          $setParams[] = '-t';
+          $setParams[] = $duration;
+          //add a fade at the end
+          $setParams[] = '-af';
+          $setParams[] = 'afade=t=out:st='.(($duration+$seekInseconds) - 1).':d=1';
+
+      }
+
+
 
 
       $this->params =  array_merge($this->params,$setParams);
