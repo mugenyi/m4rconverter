@@ -39,3 +39,7 @@ M4rconverter allows you to easily configure the underlying __FFmpeg__  and  __au
 
 ### special thanks
 M4rconverter is built on top of [php-ffmpeg](https://github.com/PHP-FFMpeg/PHP-FFMpeg) package. __special thanks__ to the team behind the project.
+
+### Example apps
+
+itunemachine.com uses this package to [convert mp3 sounds to m4r iphone ringtones](https://itunemachine.com) 
