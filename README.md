@@ -42,4 +42,4 @@ M4rconverter is built on top of [php-ffmpeg](https://github.com/PHP-FFMpeg/PHP-F
 
 ### Example apps
 
-itunemachine.com uses this package to [convert mp3 sounds to m4r iphone ringtones](https://itunemachine.com) 
+[itunemachine.com](https://itunemachine.com/) uses this package to [make name ringtones](https://itunemachine.com/name-ringtone/maker) 
